@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo 'styling, testing and building your project before committing'
+
+# check tsconfig standards
+npm run check-types ||
+(
+    echo 'What the fuck is going on? failed type check'
+    false;
+)
