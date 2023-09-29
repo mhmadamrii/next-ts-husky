@@ -1,11 +1,8 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-echo 'styling, testing and building your project before committing'
+# Add the following
+# yarn lint-staged
 
-# check tsconfig standards
-npm run check-types ||
-(
-    echo 'What the fuck is going on? failed type check'
-    false;
-)
+# If using npm, remove above and uncomment below
+npm run lint-staged

@@ -4,5 +4,5 @@ export default function Root() {
       <h1>Hello world</h1>
       <button className="bg-lime-400">simple button</button>
     </div>
-  )
+  );
 }

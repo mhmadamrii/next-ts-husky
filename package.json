@@ -9,9 +9,12 @@
     "lint": "next lint",
     "prepare": "husky install",
     "check-types": "tsc --pretty --noEmit",
-    "check-format": "prettier --check ."
+    "check-format": "prettier --check .",
+    "format": "npx prettier . --write",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit"
   },
   "dependencies": {
+    "eslint-plugin-react": "^7.33.2",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
@@ -24,6 +27,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
     "postcss": "latest",
     "prettier": "^3.0.3",
     "tailwindcss": "latest",
