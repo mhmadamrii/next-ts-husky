@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 export default function About() {
   return (
     <section className="w-screen bg-blue mt-12">
@@ -37,7 +35,9 @@ export default function About() {
             alt="image"
           />
         </div>
-        <button className="border-red-500 border-2 p-2 rounded-md">View More</button>
+        <button className="border-red-500 border-2 p-2 rounded-md">
+          View More
+        </button>
       </div>
     </section>
   );
