@@ -1,4 +1,6 @@
-const links = ['Services', 'Blog', 'Students'];
+import Link from "next/link";
+
+const links = ['Services', 'Blog', 'About'];
 
 export default function Header() {
   return (
@@ -25,12 +27,12 @@ export default function Header() {
         <ul className="flex gap-6 list-none text-gray-200 font-semibold">
           {links.map((link, idx) => (
             <li key={link}>
-              <a
-                href="#"
+              <Link
+                href={`/${link.toLowerCase()}`}
                 className="p-2 hover:bg-gray-700 hover:rounded-md active:bg-purple-700 focus:ring focus:rounded-md focus:outline-none focus:ring-green-600"
               >
                 {link}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
