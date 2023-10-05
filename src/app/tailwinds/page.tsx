@@ -1,4 +1,4 @@
-import Tailwinds from "./index"
+import Tailwinds from './index';
 export default function TailwindsContainer() {
-    return <Tailwinds />
+  return <Tailwinds />;
 }
