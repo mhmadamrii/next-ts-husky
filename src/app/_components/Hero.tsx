@@ -13,7 +13,7 @@ const Hero = ({ cars }: { cars: any }) => {
           <h1 className="text-6xl font-semibold">
             Find, Book, Rent a car-- quick and easy
           </h1>
-          <p>
+          <p className="pt-4 text-2xl">
             Streamline your car rental experience with our
             effortless booking process.
           </p>
