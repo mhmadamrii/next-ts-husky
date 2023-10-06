@@ -7,8 +7,9 @@ const Hero = ({ cars }: { cars: any }) => {
   console.log('cars', cars);
   return (
     <>
-      <div className="flex justify-between border-2 xl:flex-row md:flex-row sm:flex-col">
-        <div className="w-2/5 border-2">
+      {/* <div className="flex justify-between border-2 xl:flex-row md:flex-row sm:flex-col"> */}
+      <div className="hero">
+        <div className="flex-1 pt-36 padding-x">
           <h1 className="text-6xl font-semibold">
             Find, Book, Rent a car-- quick and easy
           </h1>
@@ -18,13 +19,16 @@ const Hero = ({ cars }: { cars: any }) => {
           </p>
         </div>
 
-        <div className="w-3/5 flex justify-end border-2">
-          <Image
-            src="/hero.png"
-            width={300}
-            height={30}
-            alt="hero"
-          />
+        <div className="hero__image-container">
+          <div className="hero__image">
+            <Image
+              src="/hero.png"
+              alt="hero"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div className="hero__image-overlay" />
         </div>
       </div>
     </>

@@ -2,7 +2,7 @@ import Hero from './_components/Hero';
 import axios from 'axios';
 
 const getCars = async () => {
-  const options: any = {
+  const options = {
     method: 'GET',
     url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars',
     params: { model: 'corolla' },
@@ -14,10 +14,14 @@ const getCars = async () => {
     },
   };
 
-  const url =
-    'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars';
-  const res = await axios.request(url, options);
-  return res.data;
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    // Handle errors here
+    console.error('Error:', error);
+    throw error; // Rethrow the error for further handling if needed
+  }
 };
 
 export default async function RootApp({
