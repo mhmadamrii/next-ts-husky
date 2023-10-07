@@ -6,7 +6,11 @@ const getCars = async () => {
   const options = {
     method: 'GET',
     url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars',
-    params: { model: 'corolla' },
+    params: {
+      model: 'all',
+      fuel_type: 'diesel',
+      limit: '15',
+    },
     headers: {
       'X-RapidAPI-Key':
         'f86fcdd41amshab2de44902e86d8p13fbe8jsn5573c717d5b6',
@@ -31,11 +35,10 @@ export default async function RootApp({
   searchParams: any;
 }) {
   const carsData = await getCars();
-  console.log('cars data', carsData);
   return (
     <main className="main-wrapper">
       <Hero cars={carsData} />
-      <CarCatalouge />
+      <CarCatalouge cars={carsData} />
     </main>
   );
 }

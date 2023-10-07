@@ -1,8 +1,25 @@
 'use client';
 
 import React from 'react';
+import CardCars from './CardCars';
 
-const CarCatalouge = () => {
+type CarType = {
+  city_mpg: number;
+  class: string;
+  combination_mpg: number;
+  cylinders: number;
+  displacement: number;
+  drive: string;
+  fuel_type: string;
+  highway_mpg: number;
+  make: string;
+  model: string;
+  transmission: string;
+  year: number;
+};
+
+const CarCatalouge = ({ cars }: { cars: any }) => {
+  console.log('cars', cars);
   return (
     <div className="h-48">
       <div>
@@ -38,6 +55,18 @@ const CarCatalouge = () => {
             placeholder="Explore the cars.."
           />
         </div>
+      </div>
+
+      <div className="flex justify-center flex-wrap gap-5">
+        {cars.map((item: CarType, idx: number) => {
+          return (
+            <CardCars
+              year={item.year}
+              make={item.make}
+              model={item.model}
+            />
+          );
+        })}
       </div>
     </div>
   );
