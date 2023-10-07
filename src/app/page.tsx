@@ -1,3 +1,4 @@
+import CarCatalouge from './_components/CarCatalouge';
 import Hero from './_components/Hero';
 import axios from 'axios';
 
@@ -32,8 +33,9 @@ export default async function RootApp({
   const carsData = await getCars();
   console.log('cars data', carsData);
   return (
-    <main>
+    <main className="main-wrapper">
       <Hero cars={carsData} />
+      <CarCatalouge />
     </main>
   );
 }
