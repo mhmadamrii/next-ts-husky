@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         pattern: "url('/pattern.png')",
-        'hero-bg': "url('/hero-bg-bg.png')",
+        'hero-bg': "url('/hero-bg.png')",
       },
     },
   },

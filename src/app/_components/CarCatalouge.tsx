@@ -61,6 +61,7 @@ const CarCatalouge = ({ cars }: { cars: any }) => {
         {cars.map((item: CarType, idx: number) => {
           return (
             <CardCars
+              key={idx}
               year={item.year}
               make={item.make}
               model={item.model}

@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
       <Toaster richColors />
       <header>
-        <div className="flex items-center border-2 justify-between px-1.5">
+        <div className="flex items-center justify-between px-1.5 absolute top-0 right-0 left-0 w-full z-50">
           <div
             className="cursor-pointer"
             onClick={() =>
@@ -26,6 +26,7 @@ const Navbar = () => {
 
           <div className="cursor-pointer">
             <button
+              className="text-blue-600 py-4 px-10 rounded-full bg-white"
               onClick={() =>
                 toast.error('Under Development!')
               }
