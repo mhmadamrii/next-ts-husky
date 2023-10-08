@@ -15,22 +15,22 @@ body {
 }
 
 .main-wrapper {
-  @apply relative z-0 max-w-[1440px] mx-auto;
+  @apply relative z-0 mx-auto max-w-[1440px];
 }
 
 .hero {
-  @apply flex xl:flex-row flex-col gap-5 relative z-0 max-w-[1440px] mx-auto;
+  @apply relative z-0 mx-auto flex max-w-[1440px] flex-col gap-5 xl:flex-row;
 }
 
 .hero__image-container {
-  @apply xl:flex-[1.5] flex justify-end items-end w-full xl:h-screen;
+  @apply flex w-full items-end justify-end xl:h-screen xl:flex-[1.5];
 }
 
 .hero__image {
-  @apply relative xl:w-full w-[90%] xl:h-full h-[590px] z-0;
+  @apply relative z-0 h-[590px] w-[90%] xl:h-full xl:w-full;
 }
 
 .hero__image-overlay {
-  @apply absolute xl:-top-40 xl:-right-1/2 -right-1/4 bg-hero-bg bg-repeat-round -z-10 w-full xl:h-screen h-[590px] overflow-hidden max-[600px]:-right-3;
+  @apply absolute -right-1/4 -z-10 h-[590px] w-full overflow-hidden bg-hero-bg bg-repeat-round max-[600px]:-right-3 xl:-right-1/2 xl:-top-40 xl:h-screen;
   /* @apply absolute xl:-top-24 xl:-right-1/2 -right-1/4 -z-10 w-full xl:h-screen h-[590px] overflow-hidden; */
 }

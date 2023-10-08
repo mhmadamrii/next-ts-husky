@@ -2,24 +2,9 @@
 
 import React from 'react';
 import CardCars from './CardCars';
+import { CarType } from '../../../utils/types';
 
-type CarType = {
-  city_mpg: number;
-  class: string;
-  combination_mpg: number;
-  cylinders: number;
-  displacement: number;
-  drive: string;
-  fuel_type: string;
-  highway_mpg: number;
-  make: string;
-  model: string;
-  transmission: string;
-  year: number;
-};
-
-const CarCatalouge = ({ cars }: { cars: any }) => {
-  console.log('cars', cars);
+const CarCatalouge = ({ cars }: { cars: CarType[] }) => {
   return (
     <div className="h-48">
       <div>
@@ -29,15 +14,15 @@ const CarCatalouge = ({ cars }: { cars: any }) => {
         </p>
       </div>
 
-      <div className="flex justify-between gap-3 mb-5">
+      <div className="mb-5 flex justify-between gap-3">
         <div className="relative w-full">
           <img
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4"
+            className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform"
             src="/model-icon.png" // Replace with the path to your image
             alt="Icon"
           />
           <input
-            className="pl-8 border border-gray-400 rounded-md py-2 px-4 w-full placeholder-gray-500 placeholder-opacity-50"
+            className="w-full rounded-md border border-gray-400 px-4 py-2 pl-8 placeholder-gray-500 placeholder-opacity-50"
             type="text"
             placeholder="Explore the cars.."
           />
@@ -45,19 +30,19 @@ const CarCatalouge = ({ cars }: { cars: any }) => {
 
         <div className="relative w-full">
           <img
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4"
+            className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform"
             src="/model-icon.png" // Replace with the path to your image
             alt="Icon"
           />
           <input
-            className="pl-8 border border-gray-400 rounded-md py-2 px-4 w-full placeholder-gray-500 placeholder-opacity-50"
+            className="w-full rounded-md border border-gray-400 px-4 py-2 pl-8 placeholder-gray-500 placeholder-opacity-50"
             type="text"
             placeholder="Explore the cars.."
           />
         </div>
       </div>
 
-      <div className="flex justify-center flex-wrap gap-5">
+      <div className="flex flex-wrap justify-center gap-5">
         {cars.map((item: CarType, idx: number) => {
           return (
             <CardCars

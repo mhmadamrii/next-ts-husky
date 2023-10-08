@@ -2,13 +2,14 @@
 
 import Image from 'next/image';
 import React from 'react';
+import { CarType } from '../../../utils/types';
 
-const Hero = ({ cars }: { cars: any }) => {
+const Hero = ({ cars }: { cars: CarType }) => {
   console.log('cars', cars);
   return (
     <>
       <div className="hero p-3">
-        <div className="flex-1 pt-36 padding-x">
+        <div className="padding-x flex-1 pt-36">
           <h1 className="text-6xl font-semibold">
             Find, Book, Rent a car-- quick and easy
           </h1>
@@ -16,7 +17,7 @@ const Hero = ({ cars }: { cars: any }) => {
             Streamline your car rental experience with our
             effortless booking process.
           </p>
-          <button className="rounded bg-blue-600 py-2 px-4 text-white hover:bg-sky-600 mt-4">
+          <button className="mt-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-sky-600">
             Explore cars
           </button>
         </div>
