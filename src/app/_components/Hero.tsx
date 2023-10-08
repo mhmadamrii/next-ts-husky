@@ -30,7 +30,7 @@ const Hero = ({ cars }: { cars: any }) => {
               className="object-contain"
             />
           </div>
-          <div className="hero__image-overlay max-[600px]:hidden" />
+          <div className="hero__image-overlay" />
         </div>
       </div>
     </>

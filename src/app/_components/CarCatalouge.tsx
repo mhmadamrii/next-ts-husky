@@ -29,8 +29,8 @@ const CarCatalouge = ({ cars }: { cars: any }) => {
         </p>
       </div>
 
-      <div className="flex justify-between gap-3">
-        <div className="relative">
+      <div className="flex justify-between gap-3 mb-5">
+        <div className="relative w-full">
           <img
             className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4"
             src="/model-icon.png" // Replace with the path to your image
@@ -43,7 +43,7 @@ const CarCatalouge = ({ cars }: { cars: any }) => {
           />
         </div>
 
-        <div className="relative">
+        <div className="relative w-full">
           <img
             className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4"
             src="/model-icon.png" // Replace with the path to your image
