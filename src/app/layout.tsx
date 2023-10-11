@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Croissant_One } from 'next/font/google';
-import Navbar from './_components/Navbar';
 
 const raleway = Croissant_One({
   subsets: ['latin'],
@@ -21,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
-        <Navbar />
         {children}
       </body>
     </html>
