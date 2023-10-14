@@ -4,13 +4,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { sidebarLinks } from '../../../../constants';
+import { sidebarLinks } from '../../../constants';
 
 export default function LeftSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   return (
     <div className="flex flex-col space-y-5">
+      <h1 className='text-4xl'>Hello world sksksk</h1>
       {sidebarLinks.map((link, idx) => {
         const isActive = pathname === link.route;
 

@@ -1,4 +1,4 @@
-import { SignOutButton, OrganizationSwitcher } from '@clerk/nextjs';
+import { SignedIn, SignOutButton, OrganizationSwitcher } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,13 +11,13 @@ export default function Topbar() {
 
       <div className="border-2 border-blue-700">
         <p>test</p>
-        {/* <SignedIn> */}
-        <SignOutButton>
-          <div className="text-black">
-            <h1>signout</h1>
-          </div>
-        </SignOutButton>
-        {/* </SignedIn> */}
+        <SignedIn>
+          <SignOutButton>
+            <div className="text-black cursor-pointer">
+              <h1>signout</h1>
+            </div>
+          </SignOutButton>
+        </SignedIn>
       </div>
       <OrganizationSwitcher
         appearance={{
