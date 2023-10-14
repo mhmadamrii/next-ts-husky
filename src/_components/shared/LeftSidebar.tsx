@@ -11,7 +11,13 @@ export default function LeftSidebar() {
   const router = useRouter();
   return (
     <div className="flex flex-col space-y-5">
-      <h1 className='text-4xl'>Hello world sksksk</h1>
+      <h1 className="text-4xl">Hello world sksksk</h1>
+      <Link
+        href="/onboarding"
+        className="cursor-pointer rounded-full bg-blue-500 py-5 px-5"
+      >
+        on boarding
+      </Link>
       {sidebarLinks.map((link, idx) => {
         const isActive = pathname === link.route;
 
