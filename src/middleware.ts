@@ -1,11 +1,11 @@
-// @ts-nocheck 
-import { authMiddleware } from '@clerk/nextjs/server'
-import { NextResponse } from 'next/server'
+// @ts-nocheck
+import { authMiddleware } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 export default authMiddleware(() => {
-  return NextResponse.next()
-})
+  return NextResponse.next();
+});
 
 // Stop Middleware running on static files
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };
