@@ -15,3 +15,15 @@ export type TCommunityTabs = {
     label: string;
     icon: string;
 }
+
+export type TAccountProfileProps = {
+    user: {
+        id: string;
+        objectId: string;
+        username: string;
+        name: string;
+        bio: string;
+        image: string;
+    };
+    btnTitle: string;
+}
