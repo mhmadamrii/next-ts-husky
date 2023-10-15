@@ -4,21 +4,32 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import * as z from 'zod';
 import { TAccountProfileProps } from '../../../lib/types';
+// import {
+//   Form,
+//   FormControl,
+//   FormDescription,
+//   FormField,
+//   FormItem,
+//   FormLabel,
+//   FormMessage,
+//   Button,
+//   Input,
+//   Textarea,
+// } from '@/components/ui';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-  Button,
-  Input,
-  Textarea,
-} from '@/components/ui';
+} from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserValidation } from '../../../lib/validations/user';
+import { isBase64Image } from '@/lib/utils';
+import { useUploadThing } from '@/lib/uploadthing';
 
 export default function AccountProfile({
   user,
@@ -36,8 +47,20 @@ export default function AccountProfile({
   });
 
   const [files, setFiles] = useState<File[]>([]);
+  const { startUpload } = useUploadThing('media');
 
-  const handleSubmit = () => {};
+  const handleSuperSubmit = async (values: z.infer<typeof UserValidation>) => {
+    const blob = values.profile_photo;
+    const isHasImageChanged = isBase64Image(blob);
+
+    if (isHasImageChanged) {
+      const imgRes = await startUpload(files);
+
+      if (imgRes && imgRes[0].fileUrl) {
+        values.profile_photo = imgRes[0].fileUrl;
+      }
+    }
+  };
 
   const handleImage = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -46,7 +69,6 @@ export default function AccountProfile({
     e.preventDefault();
 
     const fileReader = new FileReader();
-
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       setFiles(Array.from(e.target.files));
@@ -65,103 +87,57 @@ export default function AccountProfile({
   return (
     <div className="container mx-auto">
       <Form {...form}>
-        <form className="border-2 " onSubmit={form.handleSubmit(handleSubmit)}>
+        <form onSubmit={form.handleSubmit(handleSuperSubmit)}>
           <FormField
-            control={form.control}
             name="profile_photo"
+            control={form.control}
             render={({ field }) => {
-              console.log('field', field);
               return (
-                <FormItem className="flex items-center">
+                <FormItem>
                   <FormLabel>
                     {field.value ? (
                       <Image
-                        src={field.value}
-                        width={100}
-                        height={100}
-                        alt="field"
-                        priority
-                        className="rounded-full"
+                        src={field?.value}
+                        alt="photos"
+                        height={40}
+                        width={40}
                       />
                     ) : (
                       <Image
                         src="/assets/profile.svg"
-                        width={24}
-                        height={24}
-                        alt="Default profile"
-                        className="rounded-full"
-                        priority
+                        alt="default"
+                        height={40}
+                        width={40}
                       />
                     )}
                   </FormLabel>
                   <FormControl>
-                    <Input type="file" placeholder="Input here" {...field} />
+                    <Input
+                      type="file"
+                      onChange={(e) => handleImage(e, field.onChange)}
+                    />
                   </FormControl>
                 </FormItem>
               );
             }}
           />
-
           <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base-semibold text-light-2">
-                  Name
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="account-form_input no-focus"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="username"
-            render={({ field }) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base-semibold text-light-2">
-                  Username
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="account-form_input no-focus"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
             control={form.control}
-            name="bio"
-            render={({ field }) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base-semibold text-light-2">
-                  Bio
-                </FormLabel>
-                <FormControl>
-                  <Textarea
-                    rows={10}
-                    className="account-form_input no-focus"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Input here</FormLabel>
+                  <FormControl>
+                    <Input {...field} onChange={(e) => console.log('e', e)} />
+                  </FormControl>
+                </FormItem>
+              );
+            }}
           />
-          <Button className="w-full">Submit</Button>
+          <Button type="submit" className="w-full">
+            Submit
+          </Button>
         </form>
       </Form>
     </div>
