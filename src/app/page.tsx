@@ -1,25 +1,8 @@
-type TData = {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-};
-
-const getData = async () => {
-  const res = await fetch(
-    'https://jsonplaceholder.typicode.com/posts?_limit=10',
-  );
-  return res.json();
-};
-
-export default async function Root() {
-  const data = await getData();
-  console.log(data);
+export default function RootPage() {
   return (
-    <main>
-      <div className="text-2xl">
-        <h1>Hello world</h1>
-      </div>
-    </main>
+    <div>
+      <h1>Hello world</h1>
+      <p>Lorem ipsum dolor</p>
+    </div>
   );
 }
