@@ -1,36 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
-}
-
-body {
-  overflow-x: hidden;
-}
-
-.main-wrapper {
-  @apply relative z-0 mx-auto max-w-[1440px];
-}
-
-.hero {
-  @apply relative z-0 mx-auto flex max-w-[1440px] flex-col gap-5 xl:flex-row;
-}
-
-.hero__image-container {
-  @apply flex w-full items-end justify-end xl:h-screen xl:flex-[1.5];
-}
-
-.hero__image {
-  @apply relative z-0 h-[590px] w-[90%] xl:h-full xl:w-full;
-}
-
-.hero__image-overlay {
-  @apply absolute -right-1/4 -z-10 h-[590px] w-full overflow-hidden bg-hero-bg bg-repeat-round max-[600px]:-right-3 xl:-right-1/2 xl:-top-40 xl:h-screen;
-  /* @apply absolute xl:-top-24 xl:-right-1/2 -right-1/4 -z-10 w-full xl:h-screen h-[590px] overflow-hidden; */
-}

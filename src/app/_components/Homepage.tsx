@@ -6,7 +6,7 @@ const withRedColor = (WrappedComponent: any) => {
   );
 };
 
-const MyComponent = (props) => {
+const MyComponent = (props: any) => {
   console.log('props', props);
   return (
     <div
