@@ -4,18 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import * as z from 'zod';
 import { TAccountProfileProps } from '../../../lib/types';
-// import {
-//   Form,
-//   FormControl,
-//   FormDescription,
-//   FormField,
-//   FormItem,
-//   FormLabel,
-//   FormMessage,
-//   Button,
-//   Input,
-//   Textarea,
-// } from '@/components/ui';
+
 import {
   Form,
   FormControl,
@@ -23,6 +12,7 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
@@ -30,12 +20,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { UserValidation } from '../../../lib/validations/user';
 import { isBase64Image } from '@/lib/utils';
 import { useUploadThing } from '@/lib/uploadthing';
+import { updateUser } from '../../../lib/actions/user.actions';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function AccountProfile({
   user,
   btnTitle,
 }: TAccountProfileProps) {
-  console.log('user', user);
+  const router = useRouter();
+  const pathname = usePathname();
+
   const form = useForm<z.infer<typeof UserValidation>>({
     resolver: zodResolver(UserValidation),
     defaultValues: {
@@ -59,6 +53,21 @@ export default function AccountProfile({
       if (imgRes && imgRes[0].fileUrl) {
         values.profile_photo = imgRes[0].fileUrl;
       }
+    }
+
+    await updateUser({
+      name: values.name,
+      path: pathname,
+      username: values.username,
+      userId: user.id,
+      bio: values.bio,
+      image: values.profile_photo,
+    });
+
+    if (pathname === '/profile/edit') {
+      router.back();
+    } else {
+      router.push('/');
     }
   };
 
@@ -122,14 +131,42 @@ export default function AccountProfile({
             }}
           />
           <FormField
-            name="username"
+            name="name"
             control={form.control}
             render={({ field }) => {
               return (
                 <FormItem>
                   <FormLabel>Input here</FormLabel>
                   <FormControl>
-                    <Input {...field} onChange={(e) => console.log('e', e)} />
+                    <Input {...field} />
+                  </FormControl>
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            name="username"
+            control={form.control}
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Username here</FormLabel>
+                  <FormControl>
+                    <Input type="text" {...field} />
+                  </FormControl>
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            name="bio"
+            control={form.control}
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel>Bio below</FormLabel>
+                  <FormControl>
+                    <Input type="text" {...field} />
                   </FormControl>
                 </FormItem>
               );

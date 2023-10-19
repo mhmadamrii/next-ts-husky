@@ -27,3 +27,12 @@ export type TAccountProfileProps = {
   };
   btnTitle: string;
 };
+
+export type TParamsUpdateUser = {
+  userId: string;
+  username: string;
+  name: string;
+  bio: string;
+  image: string;
+  path: string;
+};
