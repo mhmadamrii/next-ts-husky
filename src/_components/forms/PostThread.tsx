@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useOrganization } from '@clerk/nextjs';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ThreadValidation } from '../../../lib/validations/thread';
+import { createThread } from '../../../lib/actions/thread.actions';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui';
@@ -19,12 +20,10 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui';
-import { createThread } from '../../../lib/actions/thread.actions';
 
 export default function PostThread({ userId }: { userId: string }) {
   const router = useRouter();
   const pathname = usePathname();
-
   const { organization } = useOrganization();
 
   const form = useForm<z.infer<typeof ThreadValidation>>({
