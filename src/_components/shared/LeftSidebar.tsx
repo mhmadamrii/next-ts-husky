@@ -5,10 +5,20 @@ import Image from 'next/image';
 
 import { usePathname, useRouter } from 'next/navigation';
 import { sidebarLinks } from '../../../constants';
+import { useTheme } from 'next-themes';
 
 export default function LeftSidebar() {
+  const { setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
+
+  const handleLight = () => {
+    setTheme('light');
+  };
+
+  const handleDark = () => {
+    setTheme('dark');
+  };
   return (
     <div className="flex flex-col space-y-5">
       <h1 className="text-4xl">Hello world sksksk</h1>
@@ -31,6 +41,9 @@ export default function LeftSidebar() {
           </div>
         );
       })}
+
+      <button onClick={handleLight}>Change theme light</button>
+      <button onClick={handleDark}>Change theme dark</button>
     </div>
   );
 }

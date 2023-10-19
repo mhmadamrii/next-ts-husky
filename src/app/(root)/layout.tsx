@@ -2,6 +2,7 @@ import '../globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
+import { ThemeProvider } from '@/_components/theme-provider';
 
 // components
 import Topbar from '@/_components/shared/Topbar';
@@ -19,15 +20,22 @@ export const metadata: Metadata = {
 
 function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main>
-      <LeftSidebar />
-      <section className="main-container">
-        <div className="border-2 w-full max-w-4xl">
-          <SnackbarWrapper>{children}</SnackbarWrapper>
-        </div>
-      </section>
-      <RightSidebar />
-    </main>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <main>
+        <LeftSidebar />
+        <section className="main-container">
+          <div className="border-2 w-full max-w-4xl">
+            <SnackbarWrapper>{children}</SnackbarWrapper>
+          </div>
+        </section>
+        <RightSidebar />
+      </main>
+    </ThemeProvider>
   );
 }
 
