@@ -1,17 +1,28 @@
-'use client';
+import { fetchPosts } from '../../../lib/actions/thread.actions';
 
-import { useSnackbar } from 'notistack';
+export default async function RootPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
+  const result = await fetchPosts(
+    searchParams.page ? +searchParams.page : 1,
+    30,
+  );
 
-export default async function RootPage() {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  console.log('result', result);
   return (
     <>
       <h1>Hello world</h1>
-      <button
-        onClick={() => enqueueSnackbar('Hello world', { variant: 'success' })}
-      >
-        Show snackbar
-      </button>
+      {result.posts.length === 0 ? (
+        <h1 className="text-4xl">NO posts found!</h1>
+      ) : (
+        <>
+          {result.posts.map((post: any) => (
+            <h1 className="text-red-700 text-4xl">{post.text}</h1>
+          ))}
+        </>
+      )}
     </>
   );
 }

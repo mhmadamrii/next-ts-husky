@@ -1,15 +1,26 @@
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
+import { fetchUser } from '../../../../lib/actions/user.actions';
+
+import PostThread from '@/_components/forms/PostThread';
 
 export default async function CreateThread() {
   const user = await currentUser();
 
   if (!user) return null;
+  const userInfo = await fetchUser(user.id);
+  if (!userInfo.onboarded) {
+    redirect('/onboarding');
+  }
 
-  // const userInfo = await fetchUser()
   return (
-    <div>
-      <h1>Create threads</h1>
-    </div>
+    <>
+      <center>
+        <h1>Create threads</h1>
+      </center>
+      <div className="w-full border-2 border-red-600">
+        <PostThread userId={userInfo._id} />
+      </div>
+    </>
   );
 }

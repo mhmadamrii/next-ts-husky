@@ -1,7 +1,8 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import User from '../models/user.model';
+
+import { revalidatePath } from 'next/cache';
 import { connectToDB } from '../mongoose';
 import { TParamsUpdateUser } from '../types';
 
@@ -40,11 +41,16 @@ export async function updateUser({
   }
 }
 
-export async function fetchUsers(userId: string) {
+export async function fetchUser(userId: string) {
   try {
     connectToDB();
-  } catch (error) {
-    console.log({ error });
-    throw new Error('Something went wrong');
+
+    return await User.findOne({ id: userId });
+    // .populate({
+    //   path: "communities",
+    //   model: Community,
+    // });
+  } catch (error: any) {
+    throw new Error(`Failed to fetch user: ${error.message}`);
   }
 }

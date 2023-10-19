@@ -26,10 +26,10 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <main>
+      <main className="w-full flex space-x-3">
         <LeftSidebar />
-        <section className="main-container">
-          <div className="border-2 w-full max-w-4xl">
+        <section className="main-container w-full">
+          <div className="border-2 w-full">
             <SnackbarWrapper>{children}</SnackbarWrapper>
           </div>
         </section>

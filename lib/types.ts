@@ -36,3 +36,10 @@ export type TParamsUpdateUser = {
   image: string;
   path: string;
 };
+
+export type TParamsCreateThread = {
+  text: string;
+  author: string;
+  communityId: string | null;
+  path: string;
+};
