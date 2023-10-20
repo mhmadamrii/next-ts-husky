@@ -20,7 +20,7 @@ export default function LeftSidebar() {
     setTheme('dark');
   };
   return (
-    <div className="flex flex-col space-y-5">
+    <div className="hidden md:flex flex-col space-y-5">
       <h1 className="text-4xl">Hello world sksksk</h1>
       <Link
         href="/onboarding"
