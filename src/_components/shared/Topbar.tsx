@@ -49,7 +49,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Topbar() {
   return (
-    <div className="flex items-center justify-between px-10 h-16">
+    <div className="flex items-center justify-between px-4 h-16 border-2 bg-slate-100">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>

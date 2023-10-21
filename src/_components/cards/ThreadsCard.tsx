@@ -36,17 +36,17 @@ export default function ThreadCard({
 }) {
   console.log(author);
   return (
-    <div className="flex w-full justify-between flex-wrap border-2w-64 p-4 border border-gray-300 rounded shadow-md transition-transform transform hover:scale-105 cursor-pointer">
+    <div className="flex w-full justify-between flex-wrap border-2w-64 p-4 border border-gray-300 rounded shadow-md transition-transform transform hover:shadow-lg cursor-pointer">
       <div className="flex space-x-3">
         <Image
-          src={author.image}
+          src={author?.image}
           alt="author profile image"
           width={30}
           height={30}
           className="cursor-pointer rounded-full"
         />
-        <Link href={`/profile/${author.id}`} className="hover:text-blue-500">
-          <h2>{author.name}</h2>
+        <Link href={`/profile/${author?.id}`} className="hover:text-blue-500">
+          <h2>{author?.name}</h2>
         </Link>
         <div className="thread-card_bar" />
       </div>
