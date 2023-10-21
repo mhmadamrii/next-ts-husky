@@ -18,27 +18,6 @@ export const metadata: Metadata = {
   description: 'Minimalist threads clone app',
 };
 
-function AppLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
-      <main className="w-full flex items-center justify-center md:justify-between container mx-auto">
-        <LeftSidebar />
-        <section className="border-2 border-blue-700">
-          <div className="border-2 w-full">
-            <SnackbarWrapper>{children}</SnackbarWrapper>
-          </div>
-        </section>
-        <RightSidebar />
-      </main>
-    </ThemeProvider>
-  );
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -48,9 +27,17 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <Topbar />
-          <AppLayout>{children}</AppLayout>
-          <Bottombar />
+          <main className="flex flex-col">
+            <Topbar />
+            <SnackbarWrapper>
+              <section className="bg-slate-100 min-h-screen">
+                <main className="container mx-auto justify-center flex mt-10 border-2">
+                  {children}
+                  {/* <RightSidebar /> */}
+                </main>
+              </section>
+            </SnackbarWrapper>
+          </main>
         </body>
       </html>
     </ClerkProvider>
