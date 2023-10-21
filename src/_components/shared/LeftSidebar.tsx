@@ -20,24 +20,29 @@ export default function LeftSidebar() {
     setTheme('dark');
   };
   return (
-    <div className="hidden md:flex flex-col space-y-5">
-      <h1 className="text-4xl">Hello world sksksk</h1>
-      <Link
+    <div className="hidden md:flex flex-col space-y-5 border-2">
+      {/* <Link
         href="/onboarding"
         className="cursor-pointer rounded-full bg-blue-500 py-5 px-5"
       >
         on boarding
-      </Link>
+      </Link> */}
       {sidebarLinks.map((link, idx) => {
         const isActive = pathname === link.route;
-
         return (
           <div
             key={idx}
-            className={`${isActive ? 'bg-blue-500' : 'bg-black'} text-white`}
+            className={`${
+              isActive ? 'text-black' : 'text-black'
+            } text-white flex space-x-5 bg-blue-950`}
           >
+            <Image
+              src={link.imgURL}
+              width={24}
+              height={24}
+              alt="link logo"
+            />
             <Link href={link.route}>{link.label}</Link>
-            <Image src={link.imgURL} width={24} height={24} alt="link logo" />
           </div>
         );
       })}
