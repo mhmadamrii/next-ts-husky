@@ -8,7 +8,6 @@ import { ThemeProvider } from '@/_components/theme-provider';
 import Topbar from '@/_components/shared/Topbar';
 import LeftSidebar from '@/_components/shared/LeftSidebar';
 import RightSidebar from '@/_components/shared/RightSidebar';
-import Bottombar from '@/_components/shared/Bottombar';
 import SnackbarWrapper from '@/_components/SnackbarWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -34,11 +33,11 @@ export default function RootLayout({
             <SnackbarWrapper>
               <section className="bg-slate-100 min-h-screen min-w-full">
                 <main className="container mx-auto justify-center flex mt-16 border-2">
-                  <div className="hidden md:inline w-1/4 p-4 fixed top-16 left-0 h-full overflow-y-auto bg-white shadow-lg">
+                  <div className="hidden md:inline w-1/4 ml-5 mt-5 rounded-md p-4 fixed top-16 left-0 h-full overflow-y-auto bg-white shadow-lg">
                     <LeftSidebar />
                   </div>
-                  <div className="md:w-1/2 md:p-4">{children}</div>
-                  <div className="hidden md:inline w-1/4 p-4 fixed top-16 right-0 h-full overflow-y-auto bg-white shadow-lg">
+                  <div className="mt-5 md:mt-0 md:w-1/2 md:p-4">{children}</div>
+                  <div className="hidden md:inline w-1/4 mr-5 mt-5 rounded-md p-4 fixed top-16 right-0 h-full overflow-y-auto bg-white shadow-lg">
                     <RightSidebar />
                   </div>
                 </main>

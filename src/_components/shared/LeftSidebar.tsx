@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { sidebarLinks } from '../../../constants';
 import { useTheme } from 'next-themes';
+import { SignOutButton } from '@clerk/nextjs';
 
 export default function LeftSidebar() {
   const { setTheme } = useTheme();
@@ -35,6 +36,11 @@ export default function LeftSidebar() {
           </div>
         );
       })}
+      <SignOutButton>
+        <div className="text-white cursor-pointer bg-blue-500 rounded-full md:py-3 md:px-5 py-1 px-2">
+          <h1>signout</h1>
+        </div>
+      </SignOutButton>
     </div>
   );
 }
