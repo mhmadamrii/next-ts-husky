@@ -36,7 +36,7 @@ export default function ThreadCard({
 }) {
   console.log(author);
   return (
-    <div className="flex w-full justify-between flex-wrap border-2w-64 p-4 border border-gray-300 rounded shadow-md transition-transform transform hover:shadow-lg cursor-pointer">
+    <div className="flex w-full justify-between flex-wrap border-2w-64 p-4 border bg-white border-gray-300 rounded shadow-md transition-transform transform hover:shadow-lg cursor-pointer">
       <div className="flex space-x-3">
         <Image
           src={author?.image}
