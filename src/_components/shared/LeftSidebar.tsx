@@ -122,7 +122,7 @@ export default function LeftSidebar() {
           />
         </svg>
         <SignOutButton>
-          <h1 className='text-red-600 cursor-pointer'>signout</h1>
+          <h1 className="text-red-600 cursor-pointer">signout</h1>
         </SignOutButton>
       </div>
     </div>
