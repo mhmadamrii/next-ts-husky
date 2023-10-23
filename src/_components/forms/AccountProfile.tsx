@@ -94,15 +94,18 @@ export default function AccountProfile({
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-9">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSuperSubmit)}>
+        <form
+          onSubmit={form.handleSubmit(handleSuperSubmit)}
+          className="flex flex-col space-y-4"
+        >
           <FormField
             name="profile_photo"
             control={form.control}
             render={({ field }) => {
               return (
-                <FormItem>
+                <FormItem className="flex items-center space-x-4">
                   <FormLabel>
                     {field.value ? (
                       <Image
@@ -110,6 +113,7 @@ export default function AccountProfile({
                         alt="photos"
                         height={40}
                         width={40}
+                        className="rounded-full"
                       />
                     ) : (
                       <Image
@@ -117,6 +121,7 @@ export default function AccountProfile({
                         alt="default"
                         height={40}
                         width={40}
+                        className="rounded-full"
                       />
                     )}
                   </FormLabel>
@@ -136,9 +141,9 @@ export default function AccountProfile({
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Input here</FormLabel>
+                  {/* <FormLabel>Input here</FormLabel> */}
                   <FormControl>
-                    <Input {...field} />
+                    <Input placeholder="Your name? 🤔" {...field} />
                   </FormControl>
                 </FormItem>
               );
@@ -150,9 +155,9 @@ export default function AccountProfile({
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Username here</FormLabel>
+                  {/* <FormLabel>Username here</FormLabel> */}
                   <FormControl>
-                    <Input type="text" {...field} />
+                    <Input placeholder="Username? 😭" type="text" {...field} />
                   </FormControl>
                 </FormItem>
               );
@@ -164,15 +169,15 @@ export default function AccountProfile({
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel>Bio below</FormLabel>
+                  {/* <FormLabel>Bio below</FormLabel> */}
                   <FormControl>
-                    <Input type="text" {...field} />
+                    <Input placeholder="Your bio? 🫣" type="text" {...field} />
                   </FormControl>
                 </FormItem>
               );
             }}
           />
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full mt-5">
             Submit
           </Button>
         </form>

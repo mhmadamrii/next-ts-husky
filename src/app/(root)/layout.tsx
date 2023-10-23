@@ -32,11 +32,13 @@ export default function RootLayout({
             </div>
             <SnackbarWrapper>
               <section className="bg-slate-100 min-h-screen min-w-full">
-                <main className="container mx-auto justify-center flex mt-16 border-2">
+                <main className="container mx-auto justify-center flex mt-16">
                   <div className="hidden md:inline w-1/4 ml-5 mt-5 rounded-md p-4 fixed top-16 left-0 h-full overflow-y-auto bg-white shadow-lg">
                     <LeftSidebar />
                   </div>
-                  <div className="mt-5 md:mt-0 md:w-1/2 md:p-4">{children}</div>
+                  <div className="mt-5 md:mt-0 w-full md:w-1/2 md:p-4">
+                    {children}
+                  </div>
                   <div className="hidden md:inline w-1/4 mr-5 mt-5 rounded-md p-4 fixed top-16 right-0 h-full overflow-y-auto bg-white shadow-lg">
                     <RightSidebar />
                   </div>

@@ -18,14 +18,9 @@ export default async function OnBoarding() {
 
   return (
     <div>
-      <h1>Boarding page</h1>
-      <p>Complete your profile first</p>
-      <Link
-        href="/"
-        className="rounded-full cursor-pointer bg-blue-700 px-5 py-5"
-      >
-        Homepage
-      </Link>
+      <p className="mt-3 text-base-regular text-light-2 text-center">
+        Complete your profile to start post😁
+      </p>
       <AccountProfile user={userData} btnTitle="whatever" />
     </div>
   );

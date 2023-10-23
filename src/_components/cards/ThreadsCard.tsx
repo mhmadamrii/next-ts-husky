@@ -1,17 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ThreadCard({
-  id,
-  currentUserId,
-  parentId,
-  content,
-  author,
-  community,
-  createdAt,
-  comments,
-  isComment,
-}: {
+interface IProps {
   id: string;
   currentUserId: string;
   parentId: string | null;
@@ -32,9 +22,20 @@ export default function ThreadCard({
       image: string;
     };
   }[];
-  isComment?: string;
-}) {
-  console.log(author);
+  isComment?: string | boolean;
+}
+
+export default function ThreadCard({
+  id,
+  currentUserId,
+  parentId,
+  content,
+  author,
+  community,
+  createdAt,
+  comments,
+  isComment,
+}: IProps) {
   return (
     <div className="flex w-full justify-between flex-wrap border-2w-64 p-4 border bg-white border-gray-300 rounded shadow-md transition-transform transform hover:shadow-lg cursor-pointer">
       <div className="flex space-x-3">
@@ -86,6 +87,11 @@ export default function ThreadCard({
           />
         </div>
       </div>
+      {isComment && comments.length > 0 && (
+        <div>
+          <h3>{comments.length} replies</h3>
+        </div>
+      )}
     </div>
   );
 }

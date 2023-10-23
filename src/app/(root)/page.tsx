@@ -27,7 +27,7 @@ export default async function RootPage({
         <h1 className="text-4xl">No posts found!</h1>
       ) : (
         <>
-          <div className="space-y-6">
+          <div className="space-y-6 w-full">
             {result.posts.map((post: any) => (
               <ThreadCard
                 key={post._id}
