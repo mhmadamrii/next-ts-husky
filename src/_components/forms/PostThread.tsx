@@ -3,6 +3,7 @@
 import * as React from 'react';
 import * as z from 'zod';
 
+import { useSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
 import { useOrganization } from '@clerk/nextjs';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,9 +23,15 @@ import {
 } from '@/components/ui';
 
 export default function PostThread({ userId }: { userId: string }) {
+  const { enqueueSnackbar } = useSnackbar();
+  const { organization } = useOrganization();
+
+  const [state, setState] = React.useState({
+    isLoading: false,
+  });
+
   const router = useRouter();
   const pathname = usePathname();
-  const { organization } = useOrganization();
 
   const form = useForm<z.infer<typeof ThreadValidation>>({
     resolver: zodResolver(ThreadValidation),
@@ -37,17 +44,37 @@ export default function PostThread({ userId }: { userId: string }) {
   const handleSuperSubmit = async (
     values: z.infer<typeof ThreadValidation>,
   ) => {
-    console.log('values', values);
+    setState((prevState) => ({
+      ...prevState,
+      isLoading: true,
+    }));
+    try {
+      await createThread({
+        text: values.thread,
+        author: userId,
+        communityId: null,
+        path: pathname,
+      });
 
-    await createThread({
-      text: values.thread,
-      author: userId,
-      communityId: null,
-      path: pathname,
-    });
-
-    router.push('/');
+      enqueueSnackbar('New post created', {
+        variant: 'success',
+        autoHideDuration: 1000,
+      });
+      router.push('/');
+    } catch (error) {
+      console.log('error', error);
+    }
   };
+
+  React.useEffect(() => {
+    return () => {
+      console.log('component will unmount!');
+      setState((prevState) => ({
+        ...prevState,
+        isLoading: false,
+      }));
+    };
+  }, []);
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSuperSubmit)}>
@@ -59,7 +86,11 @@ export default function PostThread({ userId }: { userId: string }) {
               <FormItem>
                 <FormLabel>Create thread</FormLabel>
                 <FormControl>
-                  <Textarea {...field} />
+                  <Textarea
+                    placeholder="What do you think? 🤔"
+                    disabled={state.isLoading}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -67,8 +98,8 @@ export default function PostThread({ userId }: { userId: string }) {
           }}
         />
 
-        <Button type="submit" className="w-full">
-          Create new Thread!
+        <Button type="submit" className="w-full mt-5">
+          {state.isLoading ? 'Loading...' : 'Create new Thread!'}
         </Button>
       </form>
     </Form>

@@ -1,5 +1,5 @@
 import ThreadCard from '@/_components/cards/ThreadsCard';
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
@@ -9,7 +9,7 @@ import { fetchUser } from '../../../lib/actions/user.actions';
 export const metadata: Metadata = {
   title: 'Threads Clone App',
   description: 'A minimalist social media made with ❤️',
-}
+};
 
 export default async function RootPage({
   searchParams,

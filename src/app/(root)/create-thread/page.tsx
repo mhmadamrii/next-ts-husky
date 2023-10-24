@@ -18,7 +18,7 @@ export default async function CreateThread() {
       <center>
         <h1>Create threads</h1>
       </center>
-      <div className="w-full border-2 border-red-600">
+      <div className="w-full">
         <PostThread userId={userInfo._id} />
       </div>
     </>
