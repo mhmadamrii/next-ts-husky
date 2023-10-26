@@ -29,13 +29,13 @@ export default function ProfileHeader({
           />
         </div>
 
-        <div>
-          <h2 className="text-left text-heading3-bold">{name}</h2>
-          <p className="text-base-medium ">@{username}</p>
+        <div className="pl-2">
+          <h2 className="text-left font-bold text-heading3-bold">{name}</h2>
+          <p className="text-xs text-gray-500">@{username}</p>
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-4">
         <h2>My bio: {bio}</h2>
       </div>
     </>

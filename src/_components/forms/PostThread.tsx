@@ -68,7 +68,6 @@ export default function PostThread({ userId }: { userId: string }) {
 
   React.useEffect(() => {
     return () => {
-      console.log('component will unmount!');
       setState((prevState) => ({
         ...prevState,
         isLoading: false,

@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { usePathname } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CommentValidation } from '../../../lib/validations/thread';
+import { useSnackbar } from 'notistack';
 import { addCommentToThread } from '../../../lib/actions/thread.actions';
 import {
   Form,
@@ -27,6 +28,7 @@ export default function Comment({
   currentUserId: string;
 }) {
   const pathname = usePathname();
+  const { enqueueSnackbar } = useSnackbar();
 
   const form = useForm<z.infer<typeof CommentValidation>>({
     resolver: zodResolver(CommentValidation),
@@ -38,13 +40,21 @@ export default function Comment({
   const handleSuperSubmit = async (
     values: z.infer<typeof CommentValidation>,
   ) => {
-    await addCommentToThread(
-      threadId,
-      values.thread,
-      JSON.parse(currentUserId),
-      pathname,
-    );
-    form.reset();
+    try {
+      await addCommentToThread(
+        threadId,
+        values.thread,
+        JSON.parse(currentUserId),
+        pathname,
+      );
+      form.reset();
+      enqueueSnackbar('New comment created', {
+        variant: 'success',
+        autoHideDuration: 1000,
+      });
+    } catch (error) {
+      console.log({ error });
+    }
   };
 
   return (

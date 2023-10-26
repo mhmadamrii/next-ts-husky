@@ -119,7 +119,7 @@ export default function LeftSidebar() {
 
   return (
     <div className="hidden md:flex flex-col space-y-5">
-      <div className="flex justify-center flex-col ">
+      <div className="flex justify-center flex-col">
         {linkSources.map((link) => (
           <Link
             href={link.path}
