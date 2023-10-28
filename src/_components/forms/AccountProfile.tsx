@@ -21,12 +21,17 @@ import { UserValidation } from '../../../lib/validations/user';
 import { isBase64Image } from '@/lib/utils';
 import { useUploadThing } from '@/lib/uploadthing';
 import { updateUser } from '../../../lib/actions/user.actions';
+import { useSnackbar } from 'notistack';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function AccountProfile({
   user,
   btnTitle,
 }: TAccountProfileProps) {
+  const [state, setState] = React.useState({
+    isLoading: false,
+  });
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -42,8 +47,14 @@ export default function AccountProfile({
 
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing('media');
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSuperSubmit = async (values: z.infer<typeof UserValidation>) => {
+    setState((prevState) => ({
+      ...prevState,
+      isLoading: true,
+    }));
+
     const blob = values.profile_photo;
     const isHasImageChanged = isBase64Image(blob);
 
@@ -55,19 +66,31 @@ export default function AccountProfile({
       }
     }
 
-    await updateUser({
-      name: values.name,
-      path: pathname,
-      username: values.username,
-      userId: user.id,
-      bio: values.bio,
-      image: values.profile_photo,
-    });
+    try {
+      await updateUser({
+        name: values.name,
+        path: pathname,
+        username: values.username,
+        userId: user.id,
+        bio: values.bio,
+        image: values.profile_photo,
+      });
 
-    if (pathname === '/profile/edit') {
-      router.back();
-    } else {
-      router.push('/');
+      enqueueSnackbar('Successful!', {
+        variant: 'success',
+        autoHideDuration: 1000,
+      });
+
+      if (pathname === '/profile/edit') {
+        router.back();
+      } else {
+        router.push('/');
+      }
+    } catch (error) {
+      enqueueSnackbar('Something went wrong!', {
+        variant: 'error',
+        autoHideDuration: 1000,
+      });
     }
   };
 
@@ -92,6 +115,15 @@ export default function AccountProfile({
       fileReader.readAsDataURL(file);
     }
   };
+
+  React.useEffect(() => {
+    return () => {
+      setState((prevState) => ({
+        ...prevState,
+        isLoading: false,
+      }));
+    };
+  }, []);
 
   return (
     <div className="container mx-auto mt-9">
@@ -178,7 +210,7 @@ export default function AccountProfile({
             }}
           />
           <Button type="submit" className="w-full mt-5">
-            Submit
+          {state.isLoading ? 'Loading...' : 'Submit'}
           </Button>
         </form>
       </Form>
