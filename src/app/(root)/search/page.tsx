@@ -23,8 +23,6 @@ export default async function Search({
     pageSize: 25,
   });
 
-  console.log('result', result);
-
   return (
     <div>
       <Searchbar routeType="search" />

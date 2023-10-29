@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import moment from 'moment';
+import { formatDateString } from '@/lib/utils';
 
 interface IProps {
   id: string;
@@ -59,6 +60,8 @@ export default function ThreadCard({
       return postDateObj.format('MMMM D, YYYY');
     }
   };
+
+  console.log('community', community)
 
   return (
     <div className="flex w-full justify-between flex-wrap border-2w-64 p-4 border bg-white border-gray-300 rounded shadow-md transition-transform transform hover:shadow-lg cursor-pointer">
@@ -144,6 +147,25 @@ export default function ThreadCard({
           />
         </div>
       </div>
+      {!isComment && community && (
+        <Link
+          href={`/communities/${community.id}`}
+          className='mt-5 flex items-center border-2 border-red-700'
+        >
+          <p className='text-subtle-medium text-gray-1'>
+            {formatDateString(createdAt)}
+            {community && ` - ${community.name} Community`}
+          </p>
+
+          <Image
+            src={community.image}
+            alt={community.name}
+            width={14}
+            height={14}
+            className='ml-1 rounded-full object-cover'
+          />
+        </Link>
+      )}
     </div>
   );
 }

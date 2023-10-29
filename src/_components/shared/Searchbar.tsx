@@ -16,7 +16,6 @@ export default function Searchbar({ routeType }: { routeType: string }) {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      console.log('debounced');
       if (search) {
         router.push(`/${routeType}?q=` + search);
       } else {
