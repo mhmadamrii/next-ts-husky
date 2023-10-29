@@ -16,8 +16,21 @@ export default function UserCard({
   personType: string;
 }) {
   return (
-    <div>
-      <Image src={imgUrl} alt="user_logo" width={30} height={30} />
+    <div className="border-2 rounded-md p-4 flex">
+      <div>
+        <Image
+          src={imgUrl}
+          alt="user_logo"
+          width={30}
+          height={30}
+          className="rounded-full"
+        />
+      </div>
+
+      <div>
+        <h1>{name}</h1>
+        <h1>@{username}</h1>
+      </div>
     </div>
   );
 }

@@ -13,6 +13,9 @@
     "format": "npx prettier . --write",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit"
   },
+  "engines": {
+    "node": "20.2.0"
+  },
   "dependencies": {
     "@clerk/nextjs": "^4.25.4",
     "@clerk/themes": "^1.7.7",
