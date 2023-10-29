@@ -210,7 +210,7 @@ export default function AccountProfile({
             }}
           />
           <Button type="submit" className="w-full mt-5">
-          {state.isLoading ? 'Loading...' : 'Submit'}
+            {state.isLoading ? 'Loading...' : 'Submit'}
           </Button>
         </form>
       </Form>

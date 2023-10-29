@@ -61,7 +61,7 @@ export default function ThreadCard({
     }
   };
 
-  console.log('community', community)
+  console.log('community', community);
 
   return (
     <div className="flex w-full justify-between flex-wrap border-2w-64 p-4 border bg-white border-gray-300 rounded shadow-md transition-transform transform hover:shadow-lg cursor-pointer">
@@ -150,9 +150,9 @@ export default function ThreadCard({
       {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}
-          className='mt-5 flex items-center border-2 border-red-700'
+          className="mt-5 flex items-center border-2 border-red-700"
         >
-          <p className='text-subtle-medium text-gray-1'>
+          <p className="text-subtle-medium text-gray-1">
             {formatDateString(createdAt)}
             {community && ` - ${community.name} Community`}
           </p>
@@ -162,7 +162,7 @@ export default function ThreadCard({
             alt={community.name}
             width={14}
             height={14}
-            className='ml-1 rounded-full object-cover'
+            className="ml-1 rounded-full object-cover"
           />
         </Link>
       )}

@@ -19,9 +19,9 @@ export async function createThread({
 
     const communityIdObject = await Community.findOne(
       { id: communityId },
-      { _id: 1 }
+      { _id: 1 },
     );
-    console.log('community id obj', communityIdObject)
+    console.log('community id obj', communityIdObject);
 
     const createdThread = await Thread.create({
       text,

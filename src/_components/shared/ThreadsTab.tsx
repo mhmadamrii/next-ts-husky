@@ -41,6 +41,7 @@ export default async function ThreadsTab({
   accountType: string;
 }) {
   let result: Result;
+  console.log('account type', accountType);
 
   if (accountType === 'Community') {
     console.log('community');

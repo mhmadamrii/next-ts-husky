@@ -165,14 +165,14 @@ export async function getActivity(userId: string) {
       _id: { $in: childThreadIds },
       author: { $ne: userId }, // Exclude threads authored by the same user
     }).populate({
-      path: "author",
+      path: 'author',
       model: User,
-      select: "name image _id",
+      select: 'name image _id',
     });
 
     return replies;
   } catch (error) {
-    console.error("Error fetching replies: ", error);
+    console.error('Error fetching replies: ', error);
     throw error;
   }
 }
