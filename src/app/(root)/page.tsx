@@ -26,30 +26,29 @@ export default async function RootPage({
     searchParams.page ? +searchParams.page : 1,
     30,
   );
+  console.log('result', result);
 
   return (
     <>
       {result.posts.length === 0 ? (
         <h1 className="text-4xl">No posts found!</h1>
       ) : (
-        <>
-          <div className="space-y-6 w-full">
-            {result.posts.map((post: any) => (
-              <ThreadCard
-                key={post._id}
-                id={post._id}
-                // @ts-ignore
-                currentUserId={user.id}
-                parentId={post.parentId}
-                content={post.text}
-                author={post.author}
-                community={post.community}
-                createdAt={post.createdAt}
-                comments={post.children}
-              />
-            ))}
-          </div>
-        </>
+        <div className="space-y-6 w-full">
+          {result.posts.map((post: any) => (
+            <ThreadCard
+              key={post._id}
+              id={post._id}
+              // @ts-ignore
+              currentUserId={user.id}
+              parentId={post.parentId}
+              content={post.text}
+              author={post.author}
+              community={post.community}
+              createdAt={post.createdAt}
+              comments={post.children}
+            />
+          ))}
+        </div>
       )}
     </>
   );
