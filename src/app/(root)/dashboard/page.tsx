@@ -19,7 +19,7 @@ export const AnotherComp = ({
     <div>
       <p>Example of another component</p>
       {data.map((person, idx) => (
-        <div>{person.name}</div>
+        <div key={idx}>{person.name}</div>
       ))}
     </div>
   );
