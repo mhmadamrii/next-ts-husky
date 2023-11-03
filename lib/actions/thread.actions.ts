@@ -21,7 +21,6 @@ export async function createThread({
       { id: communityId },
       { _id: 1 },
     );
-    console.log('community id obj', communityIdObject);
 
     const createdThread = await Thread.create({
       text,
@@ -58,6 +57,10 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
     .populate({
       path: 'author',
       model: User,
+    })
+    .populate({
+      path: "community",
+      model: Community,
     })
     .populate({
       path: 'children', // Populate the children field

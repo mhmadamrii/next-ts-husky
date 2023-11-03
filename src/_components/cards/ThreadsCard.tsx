@@ -39,7 +39,6 @@ export default function ThreadCard({
   isComment,
 }: IProps) {
   const formatDateForPostCard = (postDate: string) => {
-    console.log('community', community);
     const currentDate = moment();
     const postDateObj = moment(postDate);
     const diffDays = currentDate.diff(postDateObj, 'days');
@@ -153,16 +152,8 @@ export default function ThreadCard({
         >
           <p className="text-subtle-medium text-gray-1">
             {formatDateString(createdAt)}
-            {community && ` - ${community.name} Community`}
+            {community && ` - ${community.name}`}
           </p>
-
-          <Image
-            src={community.image}
-            alt={community.name}
-            width={14}
-            height={14}
-            className="ml-1 rounded-full object-cover"
-          />
         </Link>
       )}
     </div>

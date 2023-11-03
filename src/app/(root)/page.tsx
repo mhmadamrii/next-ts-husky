@@ -26,8 +26,6 @@ export default async function RootPage({
     searchParams.page ? +searchParams.page : 1,
     30,
   );
-  console.log('communities', result)
-
   return (
     <>
       {result.posts.length === 0 ? (
