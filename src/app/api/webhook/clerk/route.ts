@@ -37,6 +37,7 @@ type Event = {
 export const POST = async (request: Request) => {
   const payload = await request.json();
   const header = headers();
+  console.log('action triggered')
 
   const heads = {
     'svix-id': header.get('svix-id'),
@@ -193,7 +194,7 @@ export const POST = async (request: Request) => {
       await deleteCommunity(id);
 
       return NextResponse.json(
-        { message: 'Organization deleted' },
+        { message: 'Organization deleted successfully coy' },
         { status: 201 },
       );
     } catch (err) {

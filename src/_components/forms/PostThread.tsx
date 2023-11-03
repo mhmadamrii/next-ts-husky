@@ -44,7 +44,6 @@ export default function PostThread({ userId }: { userId: string }) {
   const handleSuperSubmit = async (
     values: z.infer<typeof ThreadValidation>,
   ) => {
-    console.log('org', organization);
     setState((prevState) => ({
       ...prevState,
       isLoading: true,

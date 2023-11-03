@@ -11,7 +11,6 @@ export default async function ThreadDetail({
   params: { id: string };
 }) {
   const user = await currentUser();
-  console.log('user', user);
   // @ts-ignore
   const userInfo = await fetchUser(user?.id);
   const thread = await fetchThreadById(params.id);

@@ -26,7 +26,6 @@ export default async function RootPage({
     searchParams.page ? +searchParams.page : 1,
     30,
   );
-  console.log('result', result);
 
   return (
     <>

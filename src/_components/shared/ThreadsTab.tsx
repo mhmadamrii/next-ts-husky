@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { fetchUserPosts } from '../../../lib/actions/user.actions';
-// import { fetchComm}
+import { fetchCommunityPosts } from '../../../lib/actions/community.actions';
 
 import ThreadCard from '../cards/ThreadsCard';
 
@@ -41,11 +41,9 @@ export default async function ThreadsTab({
   accountType: string;
 }) {
   let result: Result;
-  console.log('account type', accountType);
 
   if (accountType === 'Community') {
-    console.log('community');
-    // result = await fetchCommunityPosts(accountId);
+    result = await fetchCommunityPosts(accountId);
   } else {
     result = await fetchUserPosts(accountId);
   }
