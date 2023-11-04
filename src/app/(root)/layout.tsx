@@ -27,10 +27,10 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <main className="flex flex-col">
-            <div className="fixed top-0 right-0 left-0 z-10">
-              <Topbar />
-            </div>
             <SnackbarWrapper>
+              <div className="fixed top-0 right-0 left-0 z-10">
+                <Topbar />
+              </div>
               <section className="bg-slate-100 min-h-screen min-w-full">
                 <main className="container mx-auto justify-center flex mt-16">
                   <div className="hidden md:inline w-1/4 ml-5 mt-5 rounded-md p-4 fixed top-16 left-0 h-full overflow-y-auto bg-white shadow-lg">

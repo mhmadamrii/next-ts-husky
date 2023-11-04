@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -152,7 +151,8 @@ export default function LeftSidebar() {
             className="flex space-x-2 items-center"
           >
             {link.icon}
-            <h4 className="text-sm m-2 hover:text-blue-500">{link.label}</h4>
+
+            <h4 className="text-lg m-2 hover:text-blue-500">{link.label}</h4>
           </Link>
         ))}
       </div>
@@ -173,7 +173,7 @@ export default function LeftSidebar() {
           />
         </svg>
         <SignOutButton>
-          <h1 className="text-red-600 cursor-pointer">signout</h1>
+          <h1 className="text-red-600 text-lg cursor-pointer">signout</h1>
         </SignOutButton>
       </div>
     </div>

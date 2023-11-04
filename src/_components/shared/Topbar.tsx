@@ -2,10 +2,12 @@
 
 import * as React from 'react';
 import { SignOutButton, OrganizationSwitcher } from '@clerk/nextjs';
-import 'react-modern-drawer/dist/index.css';
+import { useSnackbar } from 'notistack';
+
 import Drawer from 'react-modern-drawer';
-import Hamburger, { Squash as Humberger } from 'hamburger-react';
+import Hamburger from 'hamburger-react';
 import Link from 'next/link';
+import 'react-modern-drawer/dist/index.css';
 
 const Home = () => {
   return (
@@ -130,6 +132,17 @@ const linkSources = [
 ];
 
 export default function Topbar() {
+  const { enqueueSnackbar } = useSnackbar();
+  const handleClickNotif = () => {
+    enqueueSnackbar('Under construction', {
+      anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'center',
+      },
+      variant: 'warning',
+      autoHideDuration: 1000,
+    });
+  };
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
@@ -153,7 +166,30 @@ export default function Topbar() {
         </svg>
       </Link>
 
-      <div className="inline-block md:hidden">
+      <div className="flex md:hidden">
+        <div className="mr-10 mt-3 cursor-pointer" onClick={handleClickNotif}>
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500">
+              <div className="mt-1 cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                  />
+                </svg>
+              </div>
+            </span>
+          </span>
+        </div>
         <Hamburger toggled={isOpen} toggle={setIsOpen} />
         <Drawer open={isOpen} onClose={toggleDrawer} direction="left">
           <div className="mt-10 flex flex-col">
@@ -199,7 +235,30 @@ export default function Topbar() {
           </div>
         </Drawer>
       </div>
-      <div className="hidden md:inline-block">
+      <div className="hidden md:flex space-x-10">
+        <div>
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500">
+              <div className="mt-1 cursor-pointer" onClick={handleClickNotif}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                  />
+                </svg>
+              </div>
+            </span>
+          </span>
+        </div>
         <OrganizationSwitcher
           appearance={{
             elements: {

@@ -148,7 +148,7 @@ export default function ThreadCard({
       {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}
-          className="mt-5 flex items-center border-2 border-red-700"
+          className="mt-5 flex items-center text-gray-500"
         >
           <p className="text-subtle-medium text-gray-1">
             {formatDateString(createdAt)}
