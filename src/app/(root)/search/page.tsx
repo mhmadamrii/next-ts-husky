@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs';
-
 import { fetchUser, fetchUsers } from '../../../../lib/actions/user.actions';
+import { User } from '@nextui-org/react';
+
 import UserCard from '@/_components/cards/UserCard';
 import Searchbar from '@/_components/shared/Searchbar';
 
@@ -22,6 +23,7 @@ export default async function Search({
     pageNumber: searchParams?.page ? +searchParams.page : 1,
     pageSize: 25,
   });
+  console.log('result', result);
 
   return (
     <div>
@@ -32,14 +34,16 @@ export default async function Search({
         ) : (
           <>
             {result.users.map((person) => (
-              <UserCard
-                key={person.id}
-                id={person.id}
-                name={person.name}
-                username={person.username}
-                imgUrl={person.image}
-                personType="User"
-              />
+              <>
+                <UserCard
+                  key={person.id}
+                  id={person.id}
+                  name={person.name}
+                  username={person.username}
+                  imgUrl={person.image}
+                  personType="User"
+                />
+              </>
             ))}
           </>
         )}

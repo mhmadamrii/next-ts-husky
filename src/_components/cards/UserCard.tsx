@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { Button, User } from '@nextui-org/react';
 
 export default function UserCard({
   id,
@@ -16,20 +17,19 @@ export default function UserCard({
   personType: string;
 }) {
   return (
-    <div className="border-2 rounded-md p-4 flex">
+    <div className="border-2 rounded-md p-4 flex bg-gray-100 justify-between">
       <div>
-        <Image
-          src={imgUrl}
-          alt="user_logo"
-          width={30}
-          height={30}
-          className="rounded-full"
+        <User
+          name="Jane Doe"
+          description="Product Designer"
+          avatarProps={{
+            src: imgUrl,
+          }}
         />
       </div>
 
       <div>
-        <h1>{name}</h1>
-        <h1>@{username}</h1>
+        <Button color="primary">View profile</Button>
       </div>
     </div>
   );

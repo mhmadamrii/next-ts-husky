@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import moment from 'moment';
+
 import { formatDateString } from '@/lib/utils';
+import { Avatar, AvatarGroup } from '@nextui-org/react';
+import ClientOnly from '../ClientOnly';
 
 interface IProps {
   id: string;
@@ -68,8 +71,8 @@ export default function ThreadCard({
           <Image
             src={author?.image}
             alt="author profile image"
-            width={30}
-            height={30}
+            width={35}
+            height={35}
             className="cursor-pointer rounded-full"
           />
           <div>
@@ -95,13 +98,17 @@ export default function ThreadCard({
         <div>
           {comments && comments.length > 0 ? (
             <div className=" flex items-center ml-1">
-              <Image
-                src={comments[0].author.image}
-                alt="heart"
-                width={15}
-                height={15}
-                className="rounded-full"
-              />
+              <div className="-ml-2">
+                <AvatarGroup isBordered={false} max={3}>
+                  {comments.map((item) => (
+                    <Avatar
+                      src={item.author.image}
+                      key={item.author.image}
+                      size="sm"
+                    />
+                  ))}
+                </AvatarGroup>
+              </div>
               <h3 className="pl-2">
                 {`${comments.length} ${
                   comments.length === 1 ? 'reply' : 'replies'
@@ -145,14 +152,17 @@ export default function ThreadCard({
           />
         </div>
       </div>
+
       {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}
-          className="mt-5 flex items-center text-gray-500"
+          className="mt-5 flex items-center text-gray-500 truncate"
         >
-          <p className="text-subtle-medium text-gray-1">
+          <p className="text-subtle-medium text-gray-1 truncate">
             {formatDateString(createdAt)}
-            {community && ` - ${community.name}`}
+            <span className="font-bold">
+              {community && ` -  ${community.name}`}
+            </span>
           </p>
         </Link>
       )}

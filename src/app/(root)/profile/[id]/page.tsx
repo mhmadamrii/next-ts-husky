@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import ProfileHeader from '@/_components/shared/ProfileHeader';
+import ThreadsTab from '@/_components/shared/ThreadsTab';
 
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { fetchUser } from '../../../../../lib/actions/user.actions';
 import { profileTabs } from '../../../../../constants';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import ThreadsTab from '@/_components/shared/ThreadsTab';
 
 export default async function ProfileWithID({
   params,
@@ -18,6 +18,7 @@ export default async function ProfileWithID({
 
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect('/onboarding');
+  console.log('user info', userInfo)
 
   return (
     <div>

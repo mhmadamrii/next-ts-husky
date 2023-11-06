@@ -5,6 +5,7 @@ import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { fetchPosts } from '../../../lib/actions/thread.actions';
 import { fetchUser } from '../../../lib/actions/user.actions';
+import ClientOnly from '@/_components/ClientOnly';
 
 export const metadata: Metadata = {
   title: 'Threads Clone App',
@@ -26,6 +27,7 @@ export default async function RootPage({
     searchParams.page ? +searchParams.page : 1,
     30,
   );
+
   return (
     <>
       {result.posts.length === 0 ? (

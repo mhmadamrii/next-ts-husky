@@ -1,6 +1,7 @@
 import Image from 'next/image';
+
 import { fetchCommunities } from '../../../lib/actions/community.actions';
-import CompanyDialog from './CompanyDialog';
+import { Button } from '@nextui-org/react';
 
 export default async function RightSidebar() {
   const suggestedCOmmunities = await fetchCommunities({ pageSize: 4 });
@@ -25,13 +26,11 @@ export default async function RightSidebar() {
             </div>
 
             <div>
-              <button className="border-2 hidden lg:inline-block text-sm py-2 px-3 rounded-md bg-sky-500 hover:bg-sky-600 text-white">
+              <Button className="border-2 hidden lg:inline-block text-sm py-2 rounded-md bg-sky-500 hover:bg-sky-600 text-white">
                 View
-              </button>
+              </Button>
             </div>
           </div>
-
-          <CompanyDialog />
         </>
       ))}
     </div>

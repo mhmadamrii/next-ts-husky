@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ThreadValidation } from '../../../lib/validations/thread';
 import { createThread } from '../../../lib/actions/thread.actions';
 import { usePathname, useRouter } from 'next/navigation';
+import { CircularProgress } from '@nextui-org/react';
 
 import { Button } from '@/components/ui';
 import { Textarea } from '@/components/ui';
@@ -98,7 +99,11 @@ export default function PostThread({ userId }: { userId: string }) {
         />
 
         <Button type="submit" className="w-full mt-5">
-          {state.isLoading ? 'Loading...' : 'Create new Thread!'}
+          {state.isLoading ? (
+            <CircularProgress aria-label="Loading..." size="sm" />
+          ) : (
+            'Create new Thread!'
+          )}
         </Button>
       </form>
     </Form>

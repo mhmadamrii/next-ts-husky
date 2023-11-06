@@ -210,6 +210,15 @@ export default function Topbar() {
             </div>
           </div>
           <div className="border-t-2 mx-5 mt-7 mb-5"></div>
+          <div className="pl-4">
+            <OrganizationSwitcher
+              appearance={{
+                elements: {
+                  organizationSwitcherTrigger: '',
+                },
+              }}
+            />
+          </div>
           <div className="flex space-x-2 items-center pl-5">
             <Community />
             <h4 className="text-lg m-2 hover:text-blue-500">Community</h4>
@@ -235,8 +244,9 @@ export default function Topbar() {
           </div>
         </Drawer>
       </div>
+
       <div className="hidden md:flex space-x-10">
-        <div>
+        <Link href="/activity">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500">
@@ -258,7 +268,7 @@ export default function Topbar() {
               </div>
             </span>
           </span>
-        </div>
+        </Link>
         <OrganizationSwitcher
           appearance={{
             elements: {
