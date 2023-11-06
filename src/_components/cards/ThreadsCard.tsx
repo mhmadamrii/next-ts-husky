@@ -4,7 +4,6 @@ import moment from 'moment';
 
 import { formatDateString } from '@/lib/utils';
 import { Avatar, AvatarGroup } from '@nextui-org/react';
-import ClientOnly from '../ClientOnly';
 
 interface IProps {
   id: string;
