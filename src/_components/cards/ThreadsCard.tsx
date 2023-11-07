@@ -99,13 +99,16 @@ export default function ThreadCard({
             <div className=" flex items-center ml-1">
               <div className="-ml-2">
                 <AvatarGroup isBordered={false} max={3}>
-                  {comments.map((item) => (
-                    <Avatar
-                      src={item.author.image}
-                      key={item.author.image}
-                      size="sm"
-                    />
-                  ))}
+                  {comments.map((item) => {
+                    console.log('itemsss', item);
+                    return (
+                      <Avatar
+                        src={item.author.image}
+                        key={item.author.image}
+                        size="sm"
+                      />
+                    );
+                  })}
                 </AvatarGroup>
               </div>
               <h3 className="pl-2">
