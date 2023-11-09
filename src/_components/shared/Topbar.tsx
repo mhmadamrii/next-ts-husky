@@ -148,7 +148,7 @@ export default function Topbar() {
     setIsOpen((prevState) => !prevState);
   };
   return (
-    <div className="flex items-center justify-between px-4 h-16 border-2 bg-slate-100">
+    <div className="flex items-center justify-between px-4 h-16 ">
       <Link href="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
