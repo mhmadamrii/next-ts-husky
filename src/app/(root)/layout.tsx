@@ -1,5 +1,4 @@
 import '../globals.css';
-import 'react-tiny-fab/dist/styles.css';
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -42,7 +41,7 @@ export default function RootLayout({
                     </div>
                     <div className="mt-0 md:mt-0 w-full md:w-1/2 md:p-4">
                       {children}
-                      <div className='lg:hidden md:hidden'>
+                      <div className="lg:hidden md:hidden">
                         <FloatingButton />
                       </div>
                     </div>
