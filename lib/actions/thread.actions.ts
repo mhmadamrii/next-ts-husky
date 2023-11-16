@@ -59,7 +59,7 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
       model: User,
     })
     .populate({
-      path: "community",
+      path: 'community',
       model: Community,
     })
     .populate({

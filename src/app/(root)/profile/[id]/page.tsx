@@ -18,7 +18,7 @@ export default async function ProfileWithID({
 
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect('/onboarding');
-  console.log('user info', userInfo)
+  console.log('user info', userInfo);
 
   return (
     <div>
