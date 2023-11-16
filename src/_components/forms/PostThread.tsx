@@ -7,8 +7,8 @@ import { useSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
 import { useOrganization } from '@clerk/nextjs';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ThreadValidation } from '../../../lib/validations/thread';
-import { createThread } from '../../../lib/actions/thread.actions';
+import { ThreadValidation } from '@/lib/validations/thread';
+import { createThread } from '@/lib/actions/thread.actions';
 import { usePathname, useRouter } from 'next/navigation';
 import { CircularProgress } from '@nextui-org/react';
 

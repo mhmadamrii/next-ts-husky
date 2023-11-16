@@ -5,8 +5,8 @@ import ThreadsTab from '@/_components/shared/ThreadsTab';
 import { Suspense } from 'react';
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
-import { fetchUser } from '../../../../../lib/actions/user.actions';
-import { profileTabs } from '../../../../../constants';
+import { fetchUser } from '@/lib/actions/user.actions';
+import { profileTabs } from '@/lib/constants';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default async function ProfileWithID({

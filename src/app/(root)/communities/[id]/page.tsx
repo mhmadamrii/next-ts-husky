@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { currentUser } from '@clerk/nextjs';
-import { fetchCommunityDetails } from '../../../../../lib/actions/community.actions';
+import { fetchCommunityDetails } from '@/lib/actions/community.actions';
 import ProfileHeader from '@/_components/shared/ProfileHeader';
 
 export default async function Communities({

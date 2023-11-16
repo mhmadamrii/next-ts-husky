@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import * as z from 'zod';
-import { TAccountProfileProps } from '../../../lib/types';
+import { TAccountProfileProps } from '@/lib/types';
 
 import {
   Form,
@@ -17,10 +17,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { UserValidation } from '../../../lib/validations/user';
+import { UserValidation } from '@/lib/validations/user';
 import { isBase64Image } from '@/lib/utils';
 import { useUploadThing } from '@/lib/uploadthing';
-import { updateUser } from '../../../lib/actions/user.actions';
+import { updateUser } from '@/lib/actions/user.actions';
 import { useSnackbar } from 'notistack';
 import { usePathname, useRouter } from 'next/navigation';
 

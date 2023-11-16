@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
-import { fetchPosts } from '../../../lib/actions/thread.actions';
-import { fetchUser } from '../../../lib/actions/user.actions';
+import { fetchPosts } from '@/lib/actions/thread.actions';
+import { fetchUser } from '@/lib/actions/user.actions';
 
 export const metadata: Metadata = {
   title: 'Threads Clone App',

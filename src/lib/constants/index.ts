@@ -1,4 +1,4 @@
-import { TSidebarLinks, TProfileTabs, TCommunityTabs } from '../lib/types';
+import { TSidebarLinks, TProfileTabs, TCommunityTabs } from '../types';
 
 export const sidebarLinks: TSidebarLinks[] = [
   {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { fetchCommunities } from '../../../lib/actions/community.actions';
+import { fetchCommunities } from '@/lib/actions/community.actions';
 import { Button } from '@nextui-org/react';
 import CommunityCard from '../cards/CommunityCard';
 

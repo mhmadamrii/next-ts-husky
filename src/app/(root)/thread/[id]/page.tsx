@@ -2,8 +2,8 @@ import ThreadCard from '@/_components/cards/ThreadsCard';
 import Comment from '@/_components/forms/Comment';
 
 import { currentUser } from '@clerk/nextjs';
-import { fetchUser } from '../../../../../lib/actions/user.actions';
-import { fetchThreadById } from '../../../../../lib/actions/thread.actions';
+import { fetchUser } from '@/lib/actions/user.actions';
+import { fetchThreadById } from '@/lib/actions/thread.actions';
 
 export default async function ThreadDetail({
   params,

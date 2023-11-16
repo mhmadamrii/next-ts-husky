@@ -6,9 +6,9 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { usePathname } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CommentValidation } from '../../../lib/validations/thread';
+import { CommentValidation } from '@/lib/validations/thread';
 import { useSnackbar } from 'notistack';
-import { addCommentToThread } from '../../../lib/actions/thread.actions';
+import { addCommentToThread } from '@/lib/actions/thread.actions';
 import {
   Form,
   FormField,

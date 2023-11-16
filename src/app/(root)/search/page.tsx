@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs';
-import { fetchUser, fetchUsers } from '../../../../lib/actions/user.actions';
+import { fetchUser, fetchUsers } from '@/lib/actions/user.actions';
 import { User } from '@nextui-org/react';
 
 import UserCard from '@/_components/cards/UserCard';

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { fetchUser, getActivity } from '../../../../lib/actions/user.actions';
+import { fetchUser, getActivity } from '@/lib/actions/user.actions';
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
