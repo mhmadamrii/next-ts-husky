@@ -1,3 +1,5 @@
+import RegularLoading from '@/_components/loading';
+
 export default function Loading() {
-  return <h1>Loading page...</h1>;
+  return <RegularLoading />;
 }

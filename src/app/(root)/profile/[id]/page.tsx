@@ -2,6 +2,7 @@ import Image from 'next/image';
 import ProfileHeader from '@/_components/shared/ProfileHeader';
 import ThreadsTab from '@/_components/shared/ThreadsTab';
 
+import { Suspense } from 'react';
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { fetchUser } from '../../../../../lib/actions/user.actions';
@@ -22,14 +23,16 @@ export default async function ProfileWithID({
 
   return (
     <div>
-      <ProfileHeader
-        accountId={userInfo.id}
-        authUserId={user.id}
-        name={userInfo.name}
-        username={userInfo.username}
-        imgUrl={userInfo.image}
-        bio={userInfo.bio}
-      />
+      <Suspense fallback={<h1>Loading profile wait a minute..</h1>}>
+        <ProfileHeader
+          accountId={userInfo.id}
+          authUserId={user.id}
+          name={userInfo.name}
+          username={userInfo.username}
+          imgUrl={userInfo.image}
+          bio={userInfo.bio}
+        />
+      </Suspense>
 
       <div className="flex justify-center items-center mt-3">
         <Tabs defaultValue="threads" className="w-full">
