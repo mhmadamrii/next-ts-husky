@@ -14,11 +14,6 @@ import FloatingButton from '@/components/FloatingButton';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Threads',
-  description: 'Minimalist threads clone app',
-};
-
 export default function RootLayout({
   children,
 }: {
