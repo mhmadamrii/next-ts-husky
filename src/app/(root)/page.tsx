@@ -1,4 +1,4 @@
-import ThreadCard from '@/_components/cards/ThreadsCard';
+import ThreadCard from '@/components/cards/ThreadsCard';
 import type { Metadata } from 'next';
 
 import { currentUser } from '@clerk/nextjs';

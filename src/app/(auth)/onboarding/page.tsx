@@ -1,5 +1,5 @@
 // @ts-nocheck
-import AccountProfile from '@/_components/forms/AccountProfile';
+import AccountProfile from '@/components/forms/AccountProfile';
 import { currentUser } from '@clerk/nextjs';
 import Link from 'next/link';
 

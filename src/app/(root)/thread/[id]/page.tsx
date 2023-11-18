@@ -1,5 +1,5 @@
-import ThreadCard from '@/_components/cards/ThreadsCard';
-import Comment from '@/_components/forms/Comment';
+import ThreadCard from '@/components/cards/ThreadsCard';
+import Comment from '@/components/forms/Comment';
 
 import { currentUser } from '@clerk/nextjs';
 import { fetchUser } from '@/lib/actions/user.actions';

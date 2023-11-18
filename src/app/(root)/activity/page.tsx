@@ -5,7 +5,7 @@ import { fetchUser, getActivity } from '@/lib/actions/user.actions';
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
-import RegularLoading from '@/_components/loading';
+import RegularLoading from '@/components/loading';
 
 export default async function Activity() {
   const user = await currentUser();

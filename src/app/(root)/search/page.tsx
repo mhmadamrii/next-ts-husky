@@ -3,8 +3,8 @@ import { currentUser } from '@clerk/nextjs';
 import { fetchUser, fetchUsers } from '@/lib/actions/user.actions';
 import { User } from '@nextui-org/react';
 
-import UserCard from '@/_components/cards/UserCard';
-import Searchbar from '@/_components/shared/Searchbar';
+import UserCard from '@/components/cards/UserCard';
+import Searchbar from '@/components/shared/Searchbar';
 
 export default async function Search({
   searchParams,

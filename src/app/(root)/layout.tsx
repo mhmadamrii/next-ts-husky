@@ -3,14 +3,14 @@ import '../globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
-import { NextProviderUI } from '@/_components/nextui-provider';
+import { NextProviderUI } from '@/components/nextui-provider';
 
 // components
-import Topbar from '@/_components/shared/Topbar';
-import LeftSidebar from '@/_components/shared/LeftSidebar';
-import RightSidebar from '@/_components/shared/RightSidebar';
-import SnackbarWrapper from '@/_components/SnackbarWrapper';
-import FloatingButton from '@/_components/FloatingButton';
+import Topbar from '@/components/shared/Topbar';
+import LeftSidebar from '@/components/shared/LeftSidebar';
+import RightSidebar from '@/components/shared/RightSidebar';
+import SnackbarWrapper from '@/components/SnackbarWrapper';
+import FloatingButton from '@/components/FloatingButton';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import ProfileHeader from '@/_components/shared/ProfileHeader';
-import ThreadsTab from '@/_components/shared/ThreadsTab';
+import ProfileHeader from '@/components/shared/ProfileHeader';
+import ThreadsTab from '@/components/shared/ThreadsTab';
 
 import { Suspense } from 'react';
 import { currentUser } from '@clerk/nextjs';
