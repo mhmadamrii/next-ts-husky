@@ -117,7 +117,7 @@ const linkSources = [
     id: 2,
     label: 'Profile',
     icon: <Profile />,
-    path: '/',
+    path: '#',
   },
   {
     id: 3,
@@ -231,7 +231,15 @@ export default function Topbar() {
           </div>
           <div className="flex space-x-2 items-center pl-5">
             <Community />
-            <h4 className="text-lg m-2 hover:text-blue-500">Community</h4>
+            <Link href="/communities">
+              <h4
+                className={clsx('text-lg m-2 hover:text-blue-500', {
+                  'text-blue-600': pathname === '/communities',
+                })}
+              >
+                Community
+              </h4>
+            </Link>
           </div>
           <div className="flex space-x-3 mt-5 pl-5">
             <svg

@@ -20,7 +20,7 @@ export default function FloatingButton() {
   return (
     <div className="fixed bottom-6 right-6 z-10 rounded-full">
       <Button
-        className="bg-sky-500  hover:bg-sky-600 text-white font-bold rounded-full px-0 w-5"
+        className="bg-sky-500  hover:bg-sky-600 text-white font-bold rounded-full px-0 w-16 h-16"
         size="lg"
         isIconOnly
         onClick={handleClickNotif}
@@ -31,7 +31,7 @@ export default function FloatingButton() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-12 h-12 font-bold"
         >
           <path
             strokeLinecap="round"
