@@ -3,10 +3,12 @@
 import * as React from 'react';
 import { SignOutButton, OrganizationSwitcher } from '@clerk/nextjs';
 import { useSnackbar } from 'notistack';
+import { usePathname } from 'next/navigation';
 
 import Drawer from 'react-modern-drawer';
 import Hamburger from 'hamburger-react';
 import Link from 'next/link';
+import clsx from 'clsx';
 import 'react-modern-drawer/dist/index.css';
 
 const Home = () => {
@@ -133,6 +135,9 @@ const linkSources = [
 
 export default function Topbar() {
   const { enqueueSnackbar } = useSnackbar();
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = React.useState(false);
+
   const handleClickNotif = () => {
     enqueueSnackbar('Under construction', {
       anchorOrigin: {
@@ -143,10 +148,11 @@ export default function Topbar() {
       autoHideDuration: 1000,
     });
   };
-  const [isOpen, setIsOpen] = React.useState(false);
+
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
+
   return (
     <div className="flex items-center justify-between px-4 h-16 ">
       <Link href="/">
@@ -202,7 +208,11 @@ export default function Topbar() {
                   onClick={() => setIsOpen(false)}
                 >
                   {link.icon}
-                  <h4 className="text-lg m-2 hover:text-blue-500">
+                  <h4
+                    className={clsx('text-lg m-2 hover:text-blue-500', {
+                      'text-blue-600': pathname === link.path,
+                    })}
+                  >
                     {link.label}
                   </h4>
                 </Link>

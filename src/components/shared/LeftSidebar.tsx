@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import clsx from 'clsx';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { SignOutButton } from '@clerk/nextjs';
 import { useAuth } from '@clerk/nextjs';
@@ -106,7 +107,6 @@ export default function LeftSidebar() {
   const { setTheme } = useTheme();
   const { userId } = useAuth();
   const pathname = usePathname();
-  const router = useRouter();
 
   const linkSources = [
     {
@@ -152,7 +152,13 @@ export default function LeftSidebar() {
           >
             {link.icon}
 
-            <h4 className="text-lg m-2 hover:text-blue-500">{link.label}</h4>
+            <h4
+              className={clsx('text-lg m-2 hover:text-blue-500', {
+                'text-blue-600': pathname === link.path,
+              })}
+            >
+              {link.label}
+            </h4>
           </Link>
         ))}
       </div>
